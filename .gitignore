@@ -11,6 +11,8 @@ dist/
 
 # Testing
 coverage/
+test-results/
+playwright-report/
 
 # Environment
 .env
@@ -26,6 +28,10 @@ coverage/
 # OS
 .DS_Store
 Thumbs.db
+nul
+
+# Claude
+.claude/
 
 # Debug
 npm-debug.log*
