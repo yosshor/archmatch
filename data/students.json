@@ -1,0 +1,253 @@
+{
+  "classInfo": {
+    "courseName": "Software Architecture",
+    "teacher": "Osnat",
+    "semester": "2026A",
+    "groupSize": {
+      "min": 2,
+      "max": 3
+    }
+  },
+  "students": [
+    {
+      "id": 1,
+      "name": "Shiran",
+      "phone": "+972 54-817-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 2,
+      "name": "Aleen",
+      "phone": "+972 50-996-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 3,
+      "name": "Alisa",
+      "phone": "+972 54-300-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 4,
+      "name": "Eden Ivri",
+      "phone": "+972 50-815-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 5,
+      "name": "Emeer",
+      "phone": "+972 54-777-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 6,
+      "name": "Greg Stein",
+      "phone": "+972 54-542-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 7,
+      "name": "Idan",
+      "phone": "+972 50-227-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 8,
+      "name": "Lahad Ludar",
+      "phone": "+972 50-541-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 9,
+      "name": "Moran",
+      "phone": "+972 50-570-3333",
+      "skills": [],
+      "preferences": [
+        15
+      ],
+      "available": true
+    },
+    {
+      "id": 10,
+      "name": "Ntedri",
+      "phone": "+972 54-234-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 11,
+      "name": "Omer Mintz",
+      "phone": "+972 50-205-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 12,
+      "name": "Or",
+      "phone": "+972 50-933-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 13,
+      "name": "Raphael",
+      "phone": "+972 54-755-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 14,
+      "name": "Rona",
+      "phone": "+972 54-217-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 15,
+      "name": "Roy Sharoni",
+      "phone": "+972 52-337-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 16,
+      "name": "Salma",
+      "phone": "+972 54-685-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 17,
+      "name": "Sam Rosenbaum",
+      "phone": "+972 52-397-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 18,
+      "name": "Shahar",
+      "phone": "+972 50-666-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    },
+    {
+      "id": 19,
+      "name": "Yehiel",
+      "phone": "+972 54-482-3333",
+      "skills": [],
+      "preferences": [],
+      "available": true
+    }
+  ],
+  "existingGroups": [
+    {
+      "id": "group_1769504197501_mf1oghhf7",
+      "members": [
+        1,
+        2
+      ],
+      "createdAt": "2026-01-27T08:56:37.501Z",
+      "isManual": true,
+      "projectName": null,
+      "notes": ""
+    }
+  ],
+  "generatedGroups": [
+    {
+      "id": "group_1769507816947_hie20pja7",
+      "members": [
+        3,
+        16,
+        15
+      ],
+      "createdAt": "2026-01-27T09:56:56.947Z",
+      "isManual": false,
+      "projectName": null,
+      "notes": ""
+    },
+    {
+      "id": "group_1769507816949_c58us5ogb",
+      "members": [
+        6,
+        13,
+        11
+      ],
+      "createdAt": "2026-01-27T09:56:56.949Z",
+      "isManual": false,
+      "projectName": null,
+      "notes": ""
+    },
+    {
+      "id": "group_1769507816949_2sciq4l6l",
+      "members": [
+        4,
+        18,
+        14
+      ],
+      "createdAt": "2026-01-27T09:56:56.949Z",
+      "isManual": false,
+      "projectName": null,
+      "notes": ""
+    },
+    {
+      "id": "group_1769507816949_wjhw4yhgm",
+      "members": [
+        17,
+        5,
+        19
+      ],
+      "createdAt": "2026-01-27T09:56:56.949Z",
+      "isManual": false,
+      "projectName": null,
+      "notes": ""
+    },
+    {
+      "id": "group_1769507816949_unbssu02d",
+      "members": [
+        7,
+        8,
+        12
+      ],
+      "createdAt": "2026-01-27T09:56:56.949Z",
+      "isManual": false,
+      "projectName": null,
+      "notes": ""
+    },
+    {
+      "id": "group_1769507816949_dywnzjjvn",
+      "members": [
+        10,
+        9
+      ],
+      "createdAt": "2026-01-27T09:56:56.949Z",
+      "isManual": false,
+      "projectName": null,
+      "notes": ""
+    }
+  ]
+}
