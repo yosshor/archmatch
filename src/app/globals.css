@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap');
+
+/* ==========================================
+   Theme Variables - Dark Mode (Default)
+   ========================================== */
+:root,
+html.dark {
+  color-scheme: dark;
+
+  --bg-primary: #0a0e14;
+  --bg-secondary: #111820;
+  --bg-elevated: #1a2332;
+  --bg-card: #151d2b;
+
+  --accent-primary: #ff6b4a;
+  --accent-secondary: #4a9fff;
+  --accent-tertiary: #7c5cff;
+  --accent-success: #4ade80;
+  --accent-warning: #fbbf24;
+
+  --text-primary: #f4f4f5;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --border-color: rgba(255, 255, 255, 0.08);
+  --border-active: rgba(255, 107, 74, 0.4);
+
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --noise-opacity: 0.03;
+}
+
+/* ==========================================
+   Theme Variables - Light Mode
+   ========================================== */
+html.light {
+  color-scheme: light;
+
+  --bg-primary: #f8fafc;
+  --bg-secondary: #f1f5f9;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+
+  --accent-primary: #ea580c;
+  --accent-secondary: #2563eb;
+  --accent-tertiary: #7c3aed;
+  --accent-success: #16a34a;
+  --accent-warning: #d97706;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-active: rgba(234, 88, 12, 0.4);
+
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --noise-opacity: 0.015;
+}
+
+/* ==========================================
+   Base Styles
+   ========================================== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* ==========================================
+   Scrollbar
+   ========================================== */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-elevated);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+/* ==========================================
+   Noise Overlay
+   ========================================== */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: var(--noise-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ==========================================
+   Focus States
+   ========================================== */
+input:focus,
+button:focus-visible {
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 2px;
+}
+
+/* ==========================================
+   Selection
+   ========================================== */
+::selection {
+  background-color: rgba(255, 107, 74, 0.3);
+}
+
+html.light ::selection {
+  background-color: rgba(234, 88, 12, 0.2);
+}
+
+/* ==========================================
+   Theme Transition
+   ========================================== */
+.theme-transition,
+.theme-transition *,
+.theme-transition *::before,
+.theme-transition *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
+}
