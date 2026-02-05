@@ -19,7 +19,7 @@ export function ManualPanel() {
   };
 
   const handleCreateGroup = () => {
-    if (selectedMembers.length >= 2) {
+    if (selectedMembers.length >= data.classInfo.groupSize.min) {
       createGroup(selectedMembers);
       setSelectedMembers([]);
     }
@@ -33,7 +33,7 @@ export function ManualPanel() {
       </div>
 
       {/* Create Group Form */}
-      <div className="bg-bg-card border border-gray-300 rounded-2xl p-6 mb-8 shadow-sm">
+      <div className="bg-bg-card border border-border rounded-2xl p-6 mb-8 shadow-sm">
         <h3 className="font-medium mb-4">Create Pre-formed Group</h3>
 
         <p className="text-sm text-text-muted mb-4">
@@ -53,10 +53,10 @@ export function ManualPanel() {
                 className={clsx(
                   'flex items-center gap-2 px-3 py-2 border-2 rounded-lg text-left transition-colors text-sm',
                   isGrouped
-                    ? 'opacity-40 cursor-not-allowed border-gray-200 bg-bg-elevated'
+                    ? 'opacity-40 cursor-not-allowed border-border bg-bg-elevated'
                     : isSelected
                     ? 'border-accent-primary bg-accent-primary/10'
-                    : 'border-gray-300 bg-bg-elevated hover:border-accent-secondary'
+                    : 'border-border bg-bg-elevated hover:border-accent-secondary'
                 )}
               >
                 <span
@@ -64,7 +64,7 @@ export function ManualPanel() {
                     'w-5 h-5 rounded-md border-2 flex-shrink-0 flex items-center justify-center transition-colors',
                     isSelected
                       ? 'bg-accent-primary border-accent-primary'
-                      : 'border-gray-400 bg-white/50'
+                      : 'border-text-muted bg-bg-secondary'
                   )}
                 >
                   {isSelected && (
@@ -102,7 +102,7 @@ export function ManualPanel() {
 
       {/* Existing Manual Groups */}
       <div>
-        <h3 className="font-display text-xl italic text-text-secondary mb-4 pb-2 border-b border-gray-300">
+        <h3 className="font-display text-xl italic text-text-secondary mb-4 pb-2 border-b border-border">
           Pre-formed Groups
         </h3>
 

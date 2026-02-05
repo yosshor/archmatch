@@ -10,6 +10,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        border: 'var(--border-color)',
         bg: {
           primary: 'var(--bg-primary)',
           secondary: 'var(--bg-secondary)',

@@ -6,16 +6,29 @@
 import type { Student, GroupSize } from '@/types';
 
 /**
- * Helper: Chunk array into groups of specified size
+ * Fisher-Yates shuffle - produces a uniformly random permutation
  */
-function chunkArray<T>(array: T[], size: number): T[][] {
+function fisherYatesShuffle<T>(array: T[]): T[] {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+}
+
+/**
+ * Helper: Chunk array into groups of specified size
+ * @param minSize - minimum group size; last chunk is merged with previous if smaller
+ */
+function chunkArray<T>(array: T[], size: number, minSize = 2): T[][] {
   const chunks: T[][] = [];
   for (let i = 0; i < array.length; i += size) {
     chunks.push(array.slice(i, i + size));
   }
 
   // Merge small last chunk with previous if needed
-  if (chunks.length > 1 && chunks[chunks.length - 1].length < 2) {
+  if (chunks.length > 1 && chunks[chunks.length - 1].length < minSize) {
     const last = chunks.pop()!;
     chunks[chunks.length - 1].push(...last);
   }
@@ -27,7 +40,7 @@ function chunkArray<T>(array: T[], size: number): T[][] {
  * Random matching - shuffles students and chunks into groups
  */
 export function randomMatching(students: Student[], groupSize: number): Student[][] {
-  const shuffled = [...students].sort(() => Math.random() - 0.5);
+  const shuffled = fisherYatesShuffle(students);
   return chunkArray(shuffled, groupSize);
 }
 
@@ -67,6 +80,15 @@ export function preferenceMatching(
         }
       }
 
+      // Fill up to min size if needed
+      if (groupMembers.length < groupSize.min) {
+        for (const remainingId of Array.from(ungrouped)) {
+          if (groupMembers.length >= groupSize.min) break;
+          groupMembers.push(studentMap.get(remainingId)!);
+          ungrouped.delete(remainingId);
+        }
+      }
+
       groups.push(groupMembers);
     }
   }
@@ -96,7 +118,7 @@ export function preferenceMatching(
 
   // Third pass: group remaining students randomly
   const remaining = [...ungrouped].map(id => studentMap.get(id)!);
-  const remainingGroups = chunkArray(remaining, groupSize.max);
+  const remainingGroups = chunkArray(remaining, groupSize.max, groupSize.min);
   groups.push(...remainingGroups);
 
   return groups.filter(g => g.length > 0);
@@ -139,6 +161,12 @@ export function skillBalancedMatching(
     groups.push(group);
   }
 
+  // Merge undersized last group with previous if needed
+  if (groups.length > 1 && groups[groups.length - 1].length < groupSize.min) {
+    const last = groups.pop()!;
+    groups[groups.length - 1].push(...last);
+  }
+
   return groups;
 }
 
@@ -156,7 +184,7 @@ export function alphabeticalMatching(students: Student[], groupSize: number): St
 export function roundRobinMatching(students: Student[], groupSize: number): Student[][] {
   const numGroups = Math.ceil(students.length / groupSize);
   const groups: Student[][] = Array.from({ length: numGroups }, () => []);
-  const shuffled = [...students].sort(() => Math.random() - 0.5);
+  const shuffled = fisherYatesShuffle(students);
 
   shuffled.forEach((student, index) => {
     groups[index % numGroups].push(student);

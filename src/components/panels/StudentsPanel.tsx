@@ -7,7 +7,7 @@ import { Modal } from '@/components/ui/Modal';
 import { StudentCard } from '@/components/students/StudentCard';
 
 export function StudentsPanel() {
-  const { data, searchQuery, setSearchQuery, addStudent, getGroupedIds, updateStudentPreferences } =
+  const { data, searchQuery, setSearchQuery, addStudent, removeStudent, getGroupedIds, updateStudentPreferences } =
     useAppStore();
 
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
@@ -57,6 +57,17 @@ export function StudentsPanel() {
     }
   };
 
+  const handleDeleteStudent = () => {
+    if (selectedStudentId !== null) {
+      const isGrouped = groupedIds.has(selectedStudentId);
+      if (isGrouped) {
+        return; // Don't allow deleting grouped students
+      }
+      removeStudent(selectedStudentId);
+      setIsDetailModalOpen(false);
+    }
+  };
+
   const togglePreference = (id: number) => {
     setSelectedPreferences((prev) =>
       prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id]
@@ -82,7 +93,7 @@ export function StudentsPanel() {
           placeholder="Search students..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full max-w-md px-4 py-3 bg-bg-card border border-gray-300 rounded-xl text-text-primary focus:outline-none focus:border-accent-secondary transition-colors"
+          className="w-full max-w-md px-4 py-3 bg-bg-card border border-border rounded-xl text-text-primary focus:outline-none focus:border-accent-secondary transition-colors"
         />
       </div>
 
@@ -100,7 +111,7 @@ export function StudentsPanel() {
 
       {filteredStudents.length === 0 && (
         <div className="text-center py-16 text-text-muted">
-          <div className="text-5xl mb-4 opacity-50">👥</div>
+          <div className="text-5xl mb-4 opacity-50">&#x1F465;</div>
           <p>No students found</p>
         </div>
       )}
@@ -115,7 +126,7 @@ export function StudentsPanel() {
               value={newStudent.name}
               onChange={(e) => setNewStudent({ ...newStudent, name: e.target.value })}
               placeholder="Enter student name"
-              className="w-full px-4 py-3 bg-bg-card border border-gray-300 rounded-xl text-text-primary focus:outline-none focus:border-accent-primary"
+              className="w-full px-4 py-3 bg-bg-card border border-border rounded-xl text-text-primary focus:outline-none focus:border-accent-primary"
             />
           </div>
           <div>
@@ -125,7 +136,7 @@ export function StudentsPanel() {
               value={newStudent.phone}
               onChange={(e) => setNewStudent({ ...newStudent, phone: e.target.value })}
               placeholder="+972 XX-XXX-XXXX"
-              className="w-full px-4 py-3 bg-bg-card border border-gray-300 rounded-xl text-text-primary focus:outline-none focus:border-accent-primary"
+              className="w-full px-4 py-3 bg-bg-card border border-border rounded-xl text-text-primary focus:outline-none focus:border-accent-primary"
             />
           </div>
           <div>
@@ -135,11 +146,11 @@ export function StudentsPanel() {
               value={newStudent.skills}
               onChange={(e) => setNewStudent({ ...newStudent, skills: e.target.value })}
               placeholder="React, Node.js, Python"
-              className="w-full px-4 py-3 bg-bg-card border border-gray-300 rounded-xl text-text-primary focus:outline-none focus:border-accent-primary"
+              className="w-full px-4 py-3 bg-bg-card border border-border rounded-xl text-text-primary focus:outline-none focus:border-accent-primary"
             />
           </div>
         </div>
-        <div className="flex justify-end gap-3 p-6 border-t border-gray-300">
+        <div className="flex justify-end gap-3 p-6 border-t border-border">
           <Button variant="ghost" onClick={() => setIsAddModalOpen(false)}>
             Cancel
           </Button>
@@ -185,7 +196,7 @@ export function StudentsPanel() {
                       className={`flex items-center gap-2 px-3 py-2 bg-bg-elevated border rounded-lg cursor-pointer transition-colors ${
                         selectedPreferences.includes(s.id)
                           ? 'border-accent-primary bg-accent-primary/10'
-                          : 'border-gray-300 hover:border-accent-secondary'
+                          : 'border-border hover:border-accent-secondary'
                       }`}
                     >
                       <input
@@ -201,11 +212,21 @@ export function StudentsPanel() {
             </>
           )}
         </div>
-        <div className="flex justify-end gap-3 p-6 border-t border-gray-300">
-          <Button variant="ghost" onClick={() => setIsDetailModalOpen(false)}>
-            Cancel
+        <div className="flex justify-between p-6 border-t border-border">
+          <Button
+            variant="ghost"
+            onClick={handleDeleteStudent}
+            disabled={selectedStudentId !== null && groupedIds.has(selectedStudentId)}
+            className="text-red-500 hover:text-red-400 hover:bg-red-500/10"
+          >
+            Delete Student
           </Button>
-          <Button onClick={handleSavePreferences}>Save Preferences</Button>
+          <div className="flex gap-3">
+            <Button variant="ghost" onClick={() => setIsDetailModalOpen(false)}>
+              Cancel
+            </Button>
+            <Button onClick={handleSavePreferences}>Save Preferences</Button>
+          </div>
         </div>
       </Modal>
     </div>

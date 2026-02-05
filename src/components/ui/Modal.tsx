@@ -37,7 +37,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'default' }: Mo
     >
       <div
         className={clsx(
-          'relative bg-bg-secondary border border-gray-300 rounded-2xl w-[90%] max-h-[90vh] overflow-y-auto animate-slide-up',
+          'relative bg-bg-secondary border border-border rounded-2xl w-[90%] max-h-[90vh] overflow-y-auto animate-slide-up',
           {
             'max-w-md': size === 'default',
             'max-w-2xl': size === 'large',
@@ -45,7 +45,7 @@ export function Modal({ isOpen, onClose, title, children, size = 'default' }: Mo
         )}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between p-6 border-b border-gray-300">
+        <div className="flex items-center justify-between p-6 border-b border-border">
           <h2 className="font-display text-2xl">{title}</h2>
           <button
             onClick={onClose}

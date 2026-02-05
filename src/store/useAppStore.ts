@@ -94,12 +94,16 @@ export const useAppStore = create<AppState>()(
 
       removeStudent: (id) => {
         const { data } = get();
+        const student = data.students.find((s) => s.id === id);
         set({
           data: {
             ...data,
             students: data.students.filter((s) => s.id !== id),
           },
         });
+        if (student) {
+          get().showToast(`Removed ${student.name}`);
+        }
       },
 
       updateStudentPreferences: (id, preferences) => {
@@ -145,8 +149,8 @@ export const useAppStore = create<AppState>()(
 
       createGroup: (memberIds) => {
         const { data } = get();
-        if (memberIds.length < 2) {
-          get().showToast('Select at least 2 members');
+        if (memberIds.length < data.classInfo.groupSize.min) {
+          get().showToast(`Select at least ${data.classInfo.groupSize.min} members`);
           return;
         }
         if (memberIds.length > data.classInfo.groupSize.max) {
@@ -204,7 +208,7 @@ export const useAppStore = create<AppState>()(
       getAvailableStudents: () => {
         const { data } = get();
         const groupedIds = getGroupedStudentIds(data);
-        return data.students.filter((s) => !groupedIds.has(s.id));
+        return data.students.filter((s) => s.available && !groupedIds.has(s.id));
       },
 
       getStats: () => {
