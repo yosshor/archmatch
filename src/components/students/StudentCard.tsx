@@ -20,7 +20,7 @@ export function StudentCard({ student, isGrouped, onClick }: StudentCardProps) {
     <div
       onClick={onClick}
       className={clsx(
-        'relative bg-bg-card border border-gray-300 rounded-2xl p-6 cursor-pointer transition-all duration-200 overflow-hidden group shadow-sm',
+        'relative bg-bg-card border border-border rounded-2xl p-6 cursor-pointer transition-all duration-200 overflow-hidden group shadow-sm',
         'hover:-translate-y-1 hover:shadow-lg hover:border-accent-primary/40',
         isGrouped && 'opacity-50'
       )}

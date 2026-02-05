@@ -12,9 +12,9 @@ interface GroupCardProps {
 
 export function GroupCard({ group, groupNumber, members, onDissolve }: GroupCardProps) {
   return (
-    <div className="bg-bg-card border border-gray-300 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow shadow-sm">
+    <div className="bg-bg-card border border-border rounded-2xl overflow-hidden hover:shadow-lg transition-shadow shadow-sm">
       {/* Header */}
-      <div className="flex items-center justify-between px-5 py-4 bg-bg-elevated border-b border-gray-200">
+      <div className="flex items-center justify-between px-5 py-4 bg-bg-elevated border-b border-border">
         <span className="font-display text-xl italic">Group {groupNumber}</span>
         <span
           className={`px-2 py-0.5 rounded text-xs text-white ${
@@ -35,7 +35,7 @@ export function GroupCard({ group, groupNumber, members, onDissolve }: GroupCard
           return (
             <div
               key={member.id}
-              className="flex items-center gap-4 py-3 border-b border-gray-200 last:border-0"
+              className="flex items-center gap-4 py-3 border-b border-border last:border-0"
             >
               <div className="w-9 h-9 bg-gradient-to-br from-accent-secondary to-accent-tertiary rounded-full flex items-center justify-center text-white font-medium text-sm">
                 {initials}

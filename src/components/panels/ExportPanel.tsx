@@ -60,7 +60,7 @@ export function ExportPanel() {
         <button
           onClick={handleExportHTML}
           disabled={!hasGroups}
-          className="p-6 bg-bg-card border border-gray-300 rounded-2xl text-center transition-all hover:-translate-y-0.5 hover:border-accent-primary hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+          className="p-6 bg-bg-card border border-border rounded-2xl text-center transition-all hover:-translate-y-0.5 hover:border-accent-primary hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
         >
           <div className="text-4xl mb-4">📄</div>
           <h3 className="font-medium mb-1">Print View</h3>
@@ -69,7 +69,7 @@ export function ExportPanel() {
 
         <button
           onClick={handleExportJSON}
-          className="p-6 bg-bg-card border border-gray-300 rounded-2xl text-center transition-all hover:-translate-y-0.5 hover:border-accent-primary hover:shadow-lg"
+          className="p-6 bg-bg-card border border-border rounded-2xl text-center transition-all hover:-translate-y-0.5 hover:border-accent-primary hover:shadow-lg"
         >
           <div className="text-4xl mb-4">{'{ }'}</div>
           <h3 className="font-medium mb-1">JSON Data</h3>
@@ -79,7 +79,7 @@ export function ExportPanel() {
         <button
           onClick={handleCopyToClipboard}
           disabled={!hasGroups}
-          className="p-6 bg-bg-card border border-gray-300 rounded-2xl text-center transition-all hover:-translate-y-0.5 hover:border-accent-primary hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+          className="p-6 bg-bg-card border border-border rounded-2xl text-center transition-all hover:-translate-y-0.5 hover:border-accent-primary hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
         >
           <div className="text-4xl mb-4">📋</div>
           <h3 className="font-medium mb-1">Copy List</h3>
@@ -89,7 +89,7 @@ export function ExportPanel() {
         <button
           onClick={handlePresentation}
           disabled={!hasGroups}
-          className="p-6 bg-bg-card border border-gray-300 rounded-2xl text-center transition-all hover:-translate-y-0.5 hover:border-accent-primary hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+          className="p-6 bg-bg-card border border-border rounded-2xl text-center transition-all hover:-translate-y-0.5 hover:border-accent-primary hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
         >
           <div className="text-4xl mb-4">🎯</div>
           <h3 className="font-medium mb-1">Present</h3>
@@ -100,7 +100,7 @@ export function ExportPanel() {
       {/* Preview */}
       <div>
         <h3 className="font-display text-xl italic mb-4">Preview</h3>
-        <pre className="bg-bg-card border border-gray-300 rounded-2xl p-6 text-sm text-text-secondary whitespace-pre-wrap font-mono overflow-auto max-h-96">
+        <pre className="bg-bg-card border border-border rounded-2xl p-6 text-sm text-text-secondary whitespace-pre-wrap font-mono overflow-auto max-h-96">
           {hasGroups ? previewText : 'No groups to export. Create or generate groups first.'}
         </pre>
       </div>

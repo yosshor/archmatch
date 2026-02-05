@@ -22,11 +22,11 @@ export function Button({
         'inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-200',
         // Variants
         {
-          'bg-gradient-to-br from-accent-primary to-orange-400 text-bg-primary shadow-lg shadow-accent-primary/30 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent-primary/40':
+          'bg-gradient-to-br from-accent-primary to-orange-400 text-bg-primary shadow-lg shadow-accent-primary/30 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent-primary/40 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-lg':
             variant === 'primary',
-          'bg-bg-elevated text-text-primary border border-white/10 hover:bg-bg-card hover:border-accent-secondary':
+          'bg-bg-elevated text-text-primary border border-border hover:bg-bg-card hover:border-accent-secondary disabled:opacity-50 disabled:cursor-not-allowed':
             variant === 'secondary',
-          'bg-transparent text-text-secondary border border-white/10 hover:text-text-primary hover:bg-bg-elevated':
+          'bg-transparent text-text-secondary border border-border hover:text-text-primary hover:bg-bg-elevated disabled:opacity-50 disabled:cursor-not-allowed':
             variant === 'ghost',
         },
         // Sizes
